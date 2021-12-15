@@ -21,8 +21,8 @@ JTextField txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9,txt10,txt11,txt12;
 JButton b1,b2;  //variables for JButton
 JPanel panel1;  //variables for JPanel
 // private variables of type String
-private String str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12,str13,
-str14,str15,str16;
+private String name,id,c_name,cnic,addr,number,account,c_city,car_make,model,condition,
+days,driver,fuel,discount,pay_method;
 //Private variables of type int
 private int num1, num2, num3, num4, num5,num6,num7,num8;
 CarRental(){        //constructor
@@ -217,46 +217,46 @@ CarRental(){        //constructor
     jf.setVisible(true);
 }
 public void actionPerformed(ActionEvent e){     //override method of ActionListener interface
-    str1 = (String) jcb.getSelectedItem();      //get which option is selected from drop down menu
-    str2 = txt1.getText();      //to know what is written in text field
-    str3 = txt2.getText();
-    str4 = txt3.getText();
-    str5 = txt4.getText();
-    str6 = txt5.getText();
-    str7 = txt6.getText();
-    str8 = (String) jcb1.getSelectedItem();
-    str9 = (String) jcb2.getSelectedItem();
-    str10 = (String) jcb3.getSelectedItem();
-    str11 = (String) jcb4.getSelectedItem();
-    str12 = txt9.getText();
-    str13 = (String) jcb5.getSelectedItem();
-    str14 = (String) jcb6.getSelectedItem();
-    str15 = txt10.getText();
-    str16 = (String) jcb7.getSelectedItem();
+    name = (String) jcb.getSelectedItem();      //get which option is selected from drop down menu
+    id = txt1.getText();      //to know what is written in text field
+    c_name = txt2.getText();
+    cnic = txt3.getText();
+    addr = txt4.getText();
+    number = txt5.getText();
+    account = txt6.getText();
+    c_city = (String) jcb1.getSelectedItem();
+    car_make = (String) jcb2.getSelectedItem();
+    model = (String) jcb3.getSelectedItem();
+    condition = (String) jcb4.getSelectedItem();
+    days = txt9.getText();
+    driver = (String) jcb5.getSelectedItem();
+    fuel = (String) jcb6.getSelectedItem();
+    discount = txt10.getText();
+    pay_method = (String) jcb7.getSelectedItem();
     String str = e.getActionCommand();
     if (str == "Confirm order"){    //checking either confirm order or calculate total button is pressed
         Print();
         JOptionPane.showMessageDialog(jf,"Order is Successfully placed");
     }
     else if(str == "Calculate Total"){
-        if(str10 == "BR-V"){ num1 = 5000;}      //set per day rent for different cars
-        else if (str10 == "Civic"){num1 = 6000;}
-        else if(str10 == "Corolla"){ num1 = 5500;}
-        else if(str10 == "Cultus"){ num1 = 4500;}
-        else if(str10 == "Alto"){ num1 = 4000;}
-        else if(str10 == "Sonet"){ num1 = 5000;}
-        else if(str10 == "Seltos"){ num1 = 5500;}
+        if(model == "BR-V"){ num1 = 5000;}      //set per day rent for different cars
+        else if (model == "Civic"){num1 = 6000;}
+        else if(model == "Corolla"){ num1 = 5500;}
+        else if(model == "Cultus"){ num1 = 4500;}
+        else if(model == "Alto"){ num1 = 4000;}
+        else if(model == "Sonet"){ num1 = 5000;}
+        else if(model == "Seltos"){ num1 = 5500;}
         String s = String.valueOf(num1);        //convert int in String
         txt11.setText(s);           //write value in text field
-        if(str11 == "Exellent"){num2 = 1500;}   //set price according to car condition
-        else if(str11 == "Good"){num2 = 1000;}
-        else if(str11 == "Fine"){num2 = 500;}
-        num3 = Integer.parseInt(str12);     //convert String into int
-        if (str13 == "With Driver"){ num4 = 1000;}      //set price according to facilities
+        if(condition == "Exellent"){num2 = 1500;}   //set price according to car condition
+        else if(condition == "Good"){num2 = 1000;}
+        else if(condition == "Fine"){num2 = 500;}
+        num3 = Integer.parseInt(days);     //convert String into int
+        if (driver == "With Driver"){ num4 = 1000;}      //set price according to facilities
         else{ num4 =0;}
-        if (str14 == "With Fuel"){ num5 = 1000;}
+        if (fuel == "With Fuel"){ num5 = 1000;}
         else{ num5 =0;}
-        num6 = Integer.parseInt(str15);
+        num6 = Integer.parseInt(discount);
         num7 = (num1+num2+num4+num5-num6)*num3 ;       //calculate total
         String s1 = String.valueOf(num7);
         txt12.setText(s1);    
@@ -269,22 +269,22 @@ void Print(){       //override method of abstract class "Write"
         BufferedWriter br = new BufferedWriter(fr);     //create object of BufferedWriter
         PrintWriter pw = new PrintWriter(br);       //create object of PrintWriter
         //we use above classes to append data in the end of file rather than over write the previous data
-        String s1 = "Employee name: "+str1;     //making String to write in file
-        String s2 = "Employee Id: "+str2;
-        String s3 = "Customer name: "+str3;
-        String s4 = "Customer CNIC: "+str4;
-        String s5 = "Customer Address: "+str5;
-        String s6 = "Customer Contact Number: "+str6;
-        String s7 = "Customer Account Number: "+str7;
-        String s8 = "Customer's City: "+str8;
-        String s9 = "Car make: "+str9;
-        String s10 = "Car Model: "+str10;
-        String s11 = "Car Condition: "+str11;
-        String s12 = "Number of Days: "+str12;
-        String s13 = "Driver Facility: "+str13;
-        String s14 = "Fuel Facility: "+str14;
-        String s15 = "Discount: "+str15;
-        String s16 = "Payment Method: "+str16;
+        String s1 = "Employee name: "+name;     //making String to write in file
+        String s2 = "Employee Id: "+id;
+        String s3 = "Customer name: "+c_name;
+        String s4 = "Customer CNIC: "+cnic;
+        String s5 = "Customer Address: "+addr;
+        String s6 = "Customer Contact Number: "+number;
+        String s7 = "Customer Account Number: "+account;
+        String s8 = "Customer's City: "+c_city;
+        String s9 = "Car make: "+car_make;
+        String s10 = "Car Model: "+model;
+        String s11 = "Car Condition: "+condition;
+        String s12 = "Number of Days: "+days;
+        String s13 = "Driver Facility: "+driver;
+        String s14 = "Fuel Facility: "+fuel;
+        String s15 = "Discount: "+discount;
+        String s16 = "Payment Method: "+pay_method;
         String s17 = "Total Amount: "+num7;
         pw.println(s1);     //write data in file
         pw.println(s2);
